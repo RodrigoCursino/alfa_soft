@@ -30,7 +30,7 @@
       <the-mask type="text"
                 :disabled="readOnly"
                 v-model="$v.contact.contact.$model"
-                :mask="['(##) #####-####']"
+                :mask="['#####-####']"
                 masked
                 placeholder="Digite um Telefone"/>
                 <small class="text-danger" v-if="$v.contact.contact.$error && !$v.contact.contact.required">O Telefone é Obrigatório.</small>
@@ -87,11 +87,11 @@ export default {
       contact: {
         contact: {
           required,
-          minLength: minLength(15),
+          minLength: minLength(9),
         },
         name: {
           required,
-          minLength: minLength(3),
+          minLength: minLength(5),
         },
         email: {
           required,
