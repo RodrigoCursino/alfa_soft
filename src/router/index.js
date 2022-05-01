@@ -21,6 +21,13 @@ const routes = [
     icon: 'icon-user-add',
     menu: true,
     component: () => import(/* webpackChunkName: "ContactsRegister" */ '@/views/ContactsForm.vue')
+  },
+  {
+    path: '/view/:id?',
+    name: 'contacts-view',
+    icon: 'icon-view-show',
+    menu: false,
+    component: () => import(/* webpackChunkName: "ContactsView" */ '@/views/ContactsView.vue')
   }
 ]
 

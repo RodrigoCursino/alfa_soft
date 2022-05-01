@@ -27,7 +27,9 @@
                
           /> 
       </span>
-          <icon class="buttom_icon" icon="icon-view-show"/> 
+      <span  @click="view">
+          <icon class="buttom_icon" icon="icon-view-show"/>
+      </span> 
       <span @click="deleteContact">
           <icon class="buttom_icon" icon="icon-trash"/> 
       </span>
@@ -56,6 +58,9 @@ export default {
     methods: {
       edit() {
         this.$router.push(`/register/${this.contact.id}`)
+      },
+      view() {
+        this.$router.push(`/view/${this.contact.id}`)
       },
       deleteContact() {
         const self = this
