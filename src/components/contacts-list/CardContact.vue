@@ -114,7 +114,7 @@ export default {
         display: grid;
         margin-left: $paddingDefault;
         grid-template-columns: 1fr;
-        grid-template-rows: 70% 30%;
+        grid-template-rows: 74% 26%;
         grid-template-areas: "details" "actions";
 
         .info_details {

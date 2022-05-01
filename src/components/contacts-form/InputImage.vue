@@ -20,6 +20,7 @@
     <input ref="inputFile" 
            type="file" 
            hidden
+           :disabled="disabled"
            @change="setFile"
            accept="image/png, image/gif, image/jpeg"
     /> 
@@ -38,7 +39,12 @@ export default {
             required: true,
             default: "",
             type: String
-        }
+        },
+        disabled: {
+            required: false,
+            default: false,
+            type: Boolean
+        },
     },
     data: () => ({
         showIcon: false

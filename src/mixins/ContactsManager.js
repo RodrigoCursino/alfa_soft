@@ -37,6 +37,11 @@ export const ContactsManager = {
                 this.removeContact(contact)
             } else {
                 contact.id = uuidv4()
+                let valid = this.contacts.filter( x => x.contact === contact.contact || x.email === contact.email)
+                if(valid.length>0) {
+                    this.$swal("Atenção !!!", "Contato já cadastrado", "warning")
+                    return
+                }
             }
             
             this.contacts.push(contact)
