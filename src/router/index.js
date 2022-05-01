@@ -1,23 +1,25 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'contacts-list',
-    component: Home
+    component: () => import(/* webpackChunkName: "ContactsList" */ '@/views/ContactsList.vue')
   },
   {
     path: '/list',
     name: 'contacts-list',
+    icon: 'icon-menu',
+    menu: true,
     component: () => import(/* webpackChunkName: "ContactsList" */ '@/views/ContactsList.vue')
   },
   {
-    path: '/register',
+    path: '/register/:id?',
     name: 'contacts-register',
+    icon: 'icon-user-add',
+    menu: true,
     component: () => import(/* webpackChunkName: "ContactsRegister" */ '@/views/ContactsForm.vue')
   }
 ]

@@ -1,9 +1,17 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import TheMask from 'vue-the-mask'
+import VueSweetalert2 from 'vue-sweetalert2'
 
-import "@/assets/styles/scss/_main.scss"
+
+
+Vue.use(VueSweetalert2);
+
+import 'sweetalert2/dist/sweetalert2.min.css'
+import '@/assets/styles/scss/_main.scss'
 Vue.config.productionTip = false
+Vue.use(TheMask)
 
 new Vue({
   router,

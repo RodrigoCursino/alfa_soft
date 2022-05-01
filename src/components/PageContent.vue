@@ -1,7 +1,7 @@
 <template>
   <div class="page_content">
     <div class="menu_content">
-       
+       <menu-content/>
     </div>
     <div class="content_page">
         <div class="display_page card-2">
@@ -12,8 +12,13 @@
 </template>
 
 <script>
+import MenuContent from "@/components/MenuContent"
 export default {
-    name: "page-content"
+    name: "page-content",
+    components: {
+        MenuContent
+    }
+   
 }
 </script>
 
@@ -27,18 +32,16 @@ export default {
         grid-template-areas: "menu page";
        
         margin: auto;
-        min-height: 90vh;
+        height: 90vh;
         max-width: 880px;
 
         .menu_content {
             grid-area: menu;
-            background-color: orange;
         }
 
         .content_page {
+            
             grid-area: page;
-            display: flex;
-            padding-left: 0.5em;
             
             .display_page {
                 background-color: white;

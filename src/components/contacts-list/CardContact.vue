@@ -1,53 +1,84 @@
 <template>
   <div class="profile card card-1">
     <div class="photo_content wrapper">
-      <img src="https://media.istockphoto.com/photos/studio-portrait-of-18-year-old-woman-with-brown-hair-picture-id1295120027?b=1&k=20&m=1295120027&s=170667a&w=0&h=xAOYYiTlswncFGASSWzPDkOPWRJ5uIvrVFHpI8NUEbM=" 
+      <img :src="contact.picture" 
            alt=""
-           class="image--cover"
       >
     </div>
     <div class="info_content">
       <div class="info_details">
         <div class="label_contact">
           <icon icon="icon-user"/> 
-          <span>Ana Luiza Souza</span>
+          <span>{{ contact.name }}</span>
         </div>
         <div class="label_contact">
           <icon icon="icon-envelope"/> 
-          <span>analuiza@mail.com</span>
+          <span>{{ contact.email }}</span>
         </div>
         <div class="label_contact">
           <icon icon="icon-phone"/> 
-          <span>(11) 99867-8989</span>
+          <span>{{ contact.contact }}</span>
         </div>
       </div>
       <div class="info_actions">
-          <icon class="buttom_icon" icon="icon-edit-pencil"/> 
+      <span  @click="edit">
+          <icon class="buttom_icon" 
+                icon="icon-edit-pencil"
+               
+          /> 
+      </span>
           <icon class="buttom_icon" icon="icon-view-show"/> 
+      <span @click="deleteContact">
           <icon class="buttom_icon" icon="icon-trash"/> 
+      </span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Icon from "@/components/shared/Icons"
+import Icon    from "@/components/shared/Icons"
+import Contact from "@/components/contacts-form/Contact.js"
+import {ContactsManager} from "@/mixins/ContactsManager"
 export default {
     name: "card-contact",
+    mixins: [ContactsManager],
     components: {
       Icon
+    },
+    props: {
+      contact: {
+        required: true,
+        type: Object,
+        default: () => Contact
+      }
+    },
+    methods: {
+      edit() {
+        this.$router.push(`/register/${this.contact.id}`)
+      },
+      deleteContact() {
+        const self = this
+        this.$swal.fire({
+          title: 'Atenção!!!',
+          text: "Vocẽ tem cereteza disso?",
+          confirmButtonText: 'OK',
+          showCancelButton: true,
+          icon: 'warning',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            self.removeContact(self.contact)
+            self.$emit("update")
+          } 
+        })
+      }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-
-.icon-person {
-  font-size: 1.3em;
-}
-    
     $paddingDefault: .7em;
-    $borderColorDefault: #EAEAE0;
+    $borderColorDefault: map-get($alfa-colors, 'alfa-content');
     
     .profile {
       
