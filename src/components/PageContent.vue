@@ -48,7 +48,10 @@ export default {
                 width: 100%;
                 height: 100%;
                 border-radius: 5px;
-                padding: 1em;
+                padding-left: 1em;
+                padding-right: 1em;
+                max-height: 90vh;
+                overflow-y:auto;
             }
         }
     }

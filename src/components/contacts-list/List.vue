@@ -1,9 +1,11 @@
 <template>
   <div>
-    <input type="text"
-           v-model="filter"
-           @input="keyPushSearch($event, filter)"
-           placeholder="Buscar Contatos">
+    <div class="search">
+      <input type="text"
+            v-model="filter"
+            @input="keyPushSearch($event, filter)"
+            placeholder="Buscar Contatos">
+    </div>
     <div>
       <card-contact v-for="(contact, c) in filterDataListBySearch(contacts)"
                     :key="c"
@@ -36,6 +38,11 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+.search {
+    position: sticky;
+    top: 0;
+    background-color: map-get($alfa-colors, 'alfa-white');
+    padding: 1em 1em 1em 1em;
+}
 </style>
